@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>CloudHabitat Mini Lab</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body{font-family:system-ui,Segoe UI,Roboto,Arial;max-width:900px;margin:40px auto;padding:0 20px}
+    button{padding:10px 16px;border-radius:6px}
+    pre{background:#f6f6f6;padding:12px;border-radius:6px;white-space:pre-wrap;word-break:break-word}
+  </style>
+</head>
+<body>
+  <h1>CloudHabitat Mini Lab</h1>
+  <p>Frontend served from this project. Backend API test below (local or remote).</p>
+
+  <p>
+    <label><input id="useLocal" type="checkbox" checked /> Call backend at <code>http://localhost:8787/api/echo</code></label>
+  </p>
+
+  <button id="ping">Ping backend /api/echo</button>
+  <pre id="out">ready</pre>
+
+  <script>
+    const OUT = document.getElementById('out');
+    const BTN = document.getElementById('ping');
+    function backendUrl() {
+      // if checked => local test; otherwise uses placeholder remote URL (change to your Fly app)
+      return document.getElementById('useLocal').checked
+        ? 'http://localhost:8787/api/echo'
+        : 'https://your-fly-app.fly.dev/api/echo';
+    }
+
+    BTN.onclick = async () => {
+      OUT.textContent = 'fetching...';
+      try {
+        const res = await fetch(backendUrl(), { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({time:Date.now()}) });
+        const j = await res.json();
+        OUT.textContent = JSON.stringify(j, null, 2);
+      } catch (e) {
+        OUT.textContent = 'error: ' + (e && e.message ? e.message : e);
+      }
+    };
+  </script>
+</body>
+</html>
