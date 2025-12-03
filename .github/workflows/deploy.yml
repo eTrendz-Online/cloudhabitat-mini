@@ -12,15 +12,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node (for npm lockfile etc.)
+      - name: Setup Node (so npm lockfile handling matches local)
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Debug: show repo files (optional, remove if not needed)
+      - name: Debug: show repo files (optional — remove later)
         run: |
-          echo "Workspace: $GITHUB_WORKSPACE"
+          echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+          echo "ls at repo root:"
           ls -la
+          echo "show package files:"
           ls -la package*.json package-lock.json || true
 
       - name: Install flyctl
