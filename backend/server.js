@@ -51,3 +51,13 @@ app.post('/api/echo', (req, res) => {
 
 app.get('/', (req, res) => res.send('CloudHabitat backend is running'));
 
+
+/**
+ * Start server — use PORT provided by Fly (or fallback to 8787 for local)
+ */
+const PORT = process.env.PORT || 8787;
+app.listen(PORT, () => {
+  console.log(`CloudHabitat backend listening on ${PORT}`);
+  // print a simple readiness line for Fly logs / health checks
+  console.log('READY');
+});
