@@ -10,6 +10,7 @@ app.use(express.json());
 
 // Allowed frontend origins — exact strings, no trailing slash
 const allowedOrigins = [
+  'http://localhost:8000',
   'https://cloud.eetrendz.workers.dev',
   'https://cloud.eetrendz.uk',
   'https://cloudhabitat-backend.fly.dev',
