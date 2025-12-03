@@ -25,11 +25,13 @@
     const OUT = document.getElementById('out');
     const BTN = document.getElementById('ping');
     function backendUrl() {
-      // if checked => local test; otherwise uses placeholder remote URL (change to your Fly app)
-      return document.getElementById('useRemote').checked
-        ? 'https://cloudhabitat-backend.fly.dev/api/echo'
-        : 'https://cloudhabitat-backend.fly.dev/api/echo';
-    }
+  // If the checkbox is missing (older deploy/cache), default to remote
+  const cb = document.getElementById("useRemote");
+  const useRemote = cb ? cb.checked : true; // default to remote
+  return useRemote
+    ? "https://cloudhabitat-backend.fly.dev/api/echo"
+    : "http://127.0.0.1:8787/api/echo";
+}
 
     BTN.onclick = async () => {
       OUT.textContent = 'fetching...';
