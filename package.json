@@ -1,0 +1,17 @@
+{
+  "name": "cloudhabitat-mini-lab",
+  "version": "1.0.0",
+  "description": "CloudHabitat Mini Lab — frontend in public/, backend in backend/",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.2.1"
+  }
+}
