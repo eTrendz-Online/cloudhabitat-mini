@@ -26,9 +26,9 @@
     const BTN = document.getElementById('ping');
     function backendUrl() {
       // if checked => local test; otherwise uses placeholder remote URL (change to your Fly app)
-      return document.getElementById('useLocal').checked
+      return document.getElementById('useRemote').checked
         ? 'https://cloudhabitat-backend.fly.dev/api/echo'
-        : 'https://your-fly-app.fly.dev/api/echo';
+        : 'https://cloudhabitat-backend.fly.dev/api/echo';
     }
 
     BTN.onclick = async () => {
