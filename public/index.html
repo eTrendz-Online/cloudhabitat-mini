@@ -15,7 +15,7 @@
   <p>Frontend served from this project. Backend API test below (local or remote).</p>
 
   <p>
-    <label><input id="useLocal" type="checkbox" checked /> Call backend at <code>http://localhost:8787/api/echo</code></label>
+    <label><input id="useRemote" type="checkbox" /> Call backend at <code>https://cloudhabitat-backend.fly.dev/api/echo</code></label>
   </p>
 
   <button id="ping">Ping backend /api/echo</button>
@@ -27,7 +27,7 @@
     function backendUrl() {
       // if checked => local test; otherwise uses placeholder remote URL (change to your Fly app)
       return document.getElementById('useLocal').checked
-        ? 'http://localhost:8787/api/echo'
+        ? 'https://cloudhabitat-backend.fly.dev/api/echo'
         : 'https://your-fly-app.fly.dev/api/echo';
     }
 

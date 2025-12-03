@@ -12,7 +12,7 @@ app.use(express.json());
 const allowedOrigins = [
   'https://cloud.eetrendz.workers.dev',
   'https://cloud.eetrendz.uk',
-  'http://localhost:8787',
+  'https://cloudhabitat-backend.fly.dev',
   'http://127.0.0.1:8787'
 ];
 
@@ -49,7 +49,5 @@ app.post('/api/echo', (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 8787;
-app.listen(PORT, () => {
-  console.log(`CloudHabitat backend listening on port ${PORT}`);
-});
+app.get('/', (req, res) => res.send('CloudHabitat backend is running'));
+
